@@ -23,3 +23,13 @@ CPI: Float<br>
 Unemployment: Float<br>
 
 # Using the Model for Predictions
+
+To use the model, it must be un-pickled using the Python <b>Pickle</b> library. It can be opened via the following:
+
+<b>loaded_model = pickle.load(open(filename, 'rb'))</b><br>
+
+After loading, the model can be used with the <b>predict()</b> method.<br>
+
+<b> prediction = loaded_model.predict(new_data)</b><br>
+
+This precit method then returns the predicted weekly sale data for the inputted parameters.

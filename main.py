@@ -5,13 +5,16 @@ import joblib
 from PIL import ImageTk, Image
 import matplotlib.pyplot as plt
 import warnings
-warnings.filterwarnings("ignore")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
+# Suppress warnings for better readability
+warnings.filterwarnings("ignore")
+
+# Set the display format for floating-point numbers in pandas
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
 
 
 class ModelRunnerApp:
-
     def __init__(self, master):
         self.master = master
         self.master.title("FinPulse: AI-Powered Finance")
@@ -21,12 +24,14 @@ class ModelRunnerApp:
 
         # Create GUI components
 
+        # Load and display the FinPulse logo
         image = Image.open("FinPulse Logo.jpg")  # Change the path to your image
         image = image.resize((280, 85))
         self.photo = ImageTk.PhotoImage(image)
         self.image_label = tk.Label(master, image=self.photo)
         self.image_label.pack(pady=10)
 
+        # Buttons for loading dataset, model, running model, and displaying graph
         self.load_data_button = tk.Button(master, text="Load Dataset", command=self.load_dataset)
         self.load_data_button.pack(pady=10)
 
@@ -43,17 +48,22 @@ class ModelRunnerApp:
         self.display_graph_button.pack(pady=10)
 
     def load_dataset(self):
+        # Open a file dialog to select a CSV file as the dataset
         file_path = filedialog.askopenfilename(title="Select Dataset", filetypes=[("CSV files", "*.csv")])
         if file_path:
+            # Read the CSV file into a pandas DataFrame
             self.dataset = pd.read_csv(file_path)
             print("Dataset loaded successfully.")
             print(self.dataset.head())
+            # Display the head of the dataset in the Text widget
             self.dataset_text.delete(1.0, tk.END)
             self.dataset_text.insert(tk.END, self.dataset.head().to_string())
 
     def load_model(self):
+        # Open a file dialog to select a pickled model file
         file_path = filedialog.askopenfilename(title="Select Model", filetypes=[("Model files", "*.pkl")])
         if file_path:
+            # Load the pickled model using joblib
             self.model = joblib.load(file_path)
             print("Model loaded successfully.")
 
@@ -70,6 +80,7 @@ class ModelRunnerApp:
         dates = []
 
         for i in range(len(self.dataset)):
+            # Combine Month, Day, and Year columns to create a date string
             st = str(self.dataset['Month'].loc[i]) + "/" + str(self.dataset['Day'].loc[i]) + "/" + str(
                 self.dataset['Year'].loc[i])
             dates.append(st)
@@ -78,22 +89,25 @@ class ModelRunnerApp:
                            'Unemployment']
 
         for index, row in self.dataset.iterrows():
-            # Extract features from the current row, replace this with your actual feature extraction logic
-            # For example, assuming 'feature_columns' is a list of column names used as features
+            # Extract features from the current row
             features = row[feature_columns].values.reshape(1, -1)
 
             # Make a prediction using the model
             vals.append(self.model.predict(features))
 
+        # Format the predicted values to two decimal places
         vals = ["%.2f" % elem for elem in vals]
 
+        # Create a new DataFrame for the predictions
         self.data = pd.DataFrame({'Date': dates,
-                                 'Predictions': vals})
+                                  'Predictions': vals})
 
+        # Convert 'Predictions' column to numeric
         self.data['Predictions'] = pd.to_numeric(self.data['Predictions'])
 
         print(self.data)
 
+        # Display the predictions in the Text widget
         self.dataset_text.delete(1.0, tk.END)
         self.dataset_text.insert(tk.END, self.data)
 
@@ -102,7 +116,7 @@ class ModelRunnerApp:
             print("Please load a dataset.")
             return
 
-        # Assume the dataset has a numeric column named 'numeric_column'
+        # Create a line plot for the predicted values
         plt.figure(figsize=(6, 4))
         plt.title("Weekly Sales Predictions")
         plt.xlabel("Date")

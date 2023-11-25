@@ -2,6 +2,8 @@
 
 # FinPulse
 
+FinPulse is an autonomous finance platform that uses machine learning and statistical programming to enhance the way business owners manage their finances. It offers bespoke machine learning-trained models to predict and forecast sales and income to help plan their business operations. 
+
 The FinPulse model uses <b>RandomForest regression</b> with the <b>sklearn</b> Python library. The dataset used is from Walmart's sales data from different stores across different regions and includes features such as <b>date, store number, weekly sales, holidays, temprature, fuel price, consumer price index, and the unemployment rate.</b>
 
 The Dataset was split using the <b>train_test_split</b> function within the <b>sklearn.model_selection</b> library and then a Randon Forest model was created. The target variable was selected as the weekly sales, and all others except the full date string were chosen as the features. The full date was parsed into the seperate components for day, month, and year. 
@@ -37,3 +39,17 @@ After loading, the model can be used with the <b>predict()</b> method.<br>
 <b> prediction = loaded_model.predict(new_data)</b><br>
 
 This precit method then returns the predicted weekly sale data for the inputted parameters.
+
+# Current Model Limitations
+
+1) Most stores do not post sales data publicly, so pre-trained models for certain industries, store sizes, etc. is not possible. 
+2) Dataset is broadly across all stores. The Store number is the strongest feature, with CPI and Unemployment Rate behind it. With filtering for specific stores, the Month becomes the strongest feature, followed by the CPI. 
+3) For large companies that have multiple locations, it may benefit to have localized models for specific locations, or those that fit certain criteria/metrics.
+
+# Future Improvements/Plans
+
+1) Models can be individually developed for specific stores, or stores can be categorized based on metrics by the algorithm, allowing for more specific predictions
+
+2) While the model handles seasonality in most situations, outside influences may affect weekly sales data. This can be handled with manually inserted flags whenever these events occur.
+
+3) Data could be further drilled down into specific departments as a subset model to create added value

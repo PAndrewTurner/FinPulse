@@ -1,3 +1,5 @@
+![alt text](https://github.com/PAndrewTurner/FinPulse/blob/main/FinPulse%20Logo.jpg)
+
 # FinPulse
 
 The FinPulse model uses <b>RandomForest regression</b> with the <b>sklearn</b> Python library. The dataset used is from Walmart's sales data from different stores across different regions and includes features such as <b>date, store number, weekly sales, holidays, temprature, fuel price, consumer price index, and the unemployment rate.</b>

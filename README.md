@@ -43,8 +43,12 @@ This precit method then returns the predicted weekly sale data for the inputted 
 # Current Model Limitations
 
 1) Most stores do not post sales data publicly, so pre-trained models for certain industries, store sizes, etc. is not possible. 
+
 2) Dataset is broadly across all stores. The Store number is the strongest feature, with CPI and Unemployment Rate behind it. With filtering for specific stores, the Month becomes the strongest feature, followed by the CPI. 
+
 3) For large companies that have multiple locations, it may benefit to have localized models for specific locations, or those that fit certain criteria/metrics.
+
+4) Due to the nature of initial develpment/concept implementation, a manually created dataset for testing was needed, due to the lack of publicly available data.
 
 # Future Improvements/Plans
 
@@ -53,3 +57,5 @@ This precit method then returns the predicted weekly sale data for the inputted 
 2) While the model handles seasonality in most situations, outside influences may affect weekly sales data. This can be handled with manually inserted flags whenever these events occur.
 
 3) Data could be further drilled down into specific departments as a subset model to create added value
+
+4) Future implementations would seek to add autonomous finance aspects of indepedntly pulling the data and running the models without manual input/interaction.

@@ -4,6 +4,8 @@
 
 FinPulse is an autonomous finance platform that uses machine learning and statistical programming to enhance the way business owners manage their finances. It offers bespoke machine learning-trained models to predict and forecast sales and income to help plan their business operations. 
 
+## Model Creation
+
 The FinPulse model uses <b>RandomForest regression</b> with the <b>sklearn</b> Python library. The dataset used is from Walmart's sales data from different stores across different regions and includes features such as <b>date, store number, weekly sales, holidays, temprature, fuel price, consumer price index, and the unemployment rate.</b>
 
 The Dataset was split using the <b>train_test_split</b> function within the <b>sklearn.model_selection</b> library and then a Randon Forest model was created. The target variable was selected as the weekly sales, and all others except the full date string were chosen as the features. The full date was parsed into the seperate components for day, month, and year. 

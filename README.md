@@ -8,7 +8,9 @@ The RandomForest model uses 1000 trees with random_state set at 28, and after fi
 
 After the model was fit and tested, it was pickled and saved so other computers may open the model as needed to run the model.
 
-In the second part of the code, we see preliminary explorartory analysis for the purpose of visualizing the dataset.
+The ML model was created, trained, and fit in the model.py file, while a GUI was created to allow for interativity with the code, housed in the main.py file.
+
+Due to the model being pre-trained, selecting the test_data.csv file selects the dataset to make predictions for the future. Both the dataset and the model must be selected. Once run, a grapgh can then be populated in the window, showing the predictions.
 
 # Variables for ML RF model
 

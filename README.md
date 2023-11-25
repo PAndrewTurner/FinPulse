@@ -1,4 +1,4 @@
-![alt text](https://github.com/PAndrewTurner/FinPulse/blob/main/FinPulse%20Logo.jpg)
+![alt text](https://github.com/PAndrewTurner/FinPulse/blob/main/FinPulse%20Logo.jpg?raw=true)
 
 # FinPulse
 

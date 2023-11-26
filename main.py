@@ -61,7 +61,7 @@ class ModelRunnerApp:
 
     def load_model(self):
         # Open a file dialog to select a pickled model file
-        file_path = filedialog.askopenfilename(title="Select Model", filetypes=[("Model files", "*.pkl")])
+        file_path = filedialog.askopenfilename(title="Select Model", filetypes=[("Model files", ["*.joblib", "*.pkl"])])
         if file_path:
             # Load the pickled model using joblib
             self.model = joblib.load(file_path)

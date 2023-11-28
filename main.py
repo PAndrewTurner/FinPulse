@@ -11,7 +11,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 warnings.filterwarnings("ignore")
 
 # Set the display format for floating-point numbers in pandas
-pd.set_option('display.float_format', lambda x: '%.3f' % x)
+pd.set_option('display.float_format', lambda x: '%.2f' % x)
 
 
 class ModelRunnerApp:
